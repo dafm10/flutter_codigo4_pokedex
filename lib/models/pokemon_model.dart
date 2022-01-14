@@ -1,3 +1,4 @@
+
 class PokemonModel {
   String name;
   String img;
@@ -8,6 +9,8 @@ class PokemonModel {
   String candy;
   int candy_count;
   String egg;
+  List<double> multipliers;
+  List<String> weaknesses;
 
   PokemonModel({
     required this.name,
@@ -19,6 +22,8 @@ class PokemonModel {
     required this.candy,
     required this.candy_count,
     required this.egg,
+    required this.multipliers,
+    required this.weaknesses,
   });
 
   factory PokemonModel.fromJson(Map<String, dynamic> json) => PokemonModel(
@@ -32,6 +37,9 @@ class PokemonModel {
         candy: json["candy"],
         candy_count: json["candy_count"] ?? 0,
         egg: json["egg"],
+        //multipliers: json["multipliers"] != null ? List<double>.from(json["multipliers"].map((item) => item)) : [],
+        multipliers: List<double>.from((json["multipliers"] ?? []).map((item) => item)),
+        weaknesses: List<String>.from((json["weaknesses"] ?? []).map((item) => item)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -45,5 +53,7 @@ class PokemonModel {
         "candy": candy,
         "candy_count": candy_count,
         "egg": egg,
+        "multipliers": List<dynamic>.from((multipliers ?? []).map((e) => e)),
+        "weaknesses": List<dynamic>.from((weaknesses ?? []).map((e) => e)),
       };
 }

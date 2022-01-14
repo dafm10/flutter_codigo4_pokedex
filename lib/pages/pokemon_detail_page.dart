@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo4_pokedex/models/pokemon_model.dart';
 import 'package:flutter_codigo4_pokedex/ui/general/colors.dart';
+import 'package:flutter_codigo4_pokedex/ui/widgets/item_data_pokemon_widget.dart';
 import 'package:flutter_codigo4_pokedex/ui/widgets/type_pokemon_widget.dart';
 
 class PokemonDetailPage extends StatelessWidget {
@@ -57,9 +58,9 @@ class PokemonDetailPage extends StatelessWidget {
                         Row(
                             children: pokemon.type
                                 .map<Widget>((e) => TypePokemonWidget(
-                              title: e,
-                              type: pokemon.type[0],
-                            ))
+                                      title: e,
+                                      type: pokemon.type[0],
+                                    ))
                                 .toList()),
                       ],
                     ),
@@ -90,40 +91,111 @@ class PokemonDetailPage extends StatelessWidget {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      Column(
-                        children: [
-                          Text("About"),
-                          Row(
-                            children: [
-                              Text("Height: "),
-                              Text(pokemon.height),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("Weight: "),
-                              Text(pokemon.weight),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("Candy: "),
-                              Text(pokemon.candy),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("Candy Count: "),
-                              Text(pokemon.candy_count.toString()),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("Egg: "),
-                              Text(pokemon.egg),
-                            ],
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.all(22.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "About",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20.0,
+                            ),
+                            ItemDataPokemonWidget(
+                              title: "Height",
+                              data: pokemon.height,
+                            ),
+                            ItemDataPokemonWidget(
+                              title: "Weight",
+                              data: pokemon.weight,
+                            ),
+                            ItemDataPokemonWidget(
+                              title: "Candy",
+                              data: pokemon.candy,
+                            ),
+                            ItemDataPokemonWidget(
+                              title: "Candy Count",
+                              data: pokemon.candy_count.toString(),
+                            ),
+                            ItemDataPokemonWidget(
+                              title: "Egg",
+                              data: pokemon.egg,
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 0.0),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Multipliers: ",
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: pokemon.multipliers
+                                        .map<Widget>(
+                                          (e) => Container(
+                                            margin: const EdgeInsets.only(right: 4.0, left: 2.0),
+                                            child: Chip(
+                                              backgroundColor: Color(0xff14213d),
+                                              label: Text(
+                                                e.toString(),
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                        .toList(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 0.0),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Weaknesses: ",
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: SingleChildScrollView(
+                                      physics: BouncingScrollPhysics(),
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: pokemon.weaknesses
+                                            .map<Widget>(
+                                              (e) => Container(
+                                            margin: const EdgeInsets.only(right: 5.0, left: 2.0),
+                                            child: Chip(
+                                              backgroundColor: Color(0xff14213d),
+                                              label: Text(
+                                                e,
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                            .toList(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Positioned.fill(
                         top: -100,

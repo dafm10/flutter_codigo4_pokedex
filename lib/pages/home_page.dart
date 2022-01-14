@@ -99,6 +99,7 @@ class _HomePageState extends State<HomePage> {
                     color: COLOR_FONT_PRIMARY,
                   ),
                 ),
+                const SizedBox(height: 20.0,),
                 GridView.count(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
