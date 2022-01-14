@@ -12,10 +12,13 @@ class ItemDataPokemonWidget extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         children: [
-          Text(
-            "$title: ",
-            style: TextStyle(
-              color: Colors.black54
+          Container(
+            width: MediaQuery.of(context).size.width * 0.3,
+            child: Text(
+              "$title: ",
+              style: TextStyle(
+                color: Colors.black54
+              ),
             ),
           ),
           Text(

@@ -96,7 +96,7 @@ class PokemonDetailPage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "About",
                               style: TextStyle(
                                 fontSize: 20.0,
@@ -130,10 +130,13 @@ class PokemonDetailPage extends StatelessWidget {
                               margin: const EdgeInsets.symmetric(vertical: 0.0),
                               child: Row(
                                 children: [
-                                  Text(
-                                    "Multipliers: ",
-                                    style: TextStyle(
-                                      color: Colors.black54,
+                                  Container(
+                                    width: MediaQuery.of(context).size.width * 0.3,
+                                    child: const Text(
+                                      "Multipliers: ",
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                      ),
                                     ),
                                   ),
                                   Row(
@@ -145,7 +148,7 @@ class PokemonDetailPage extends StatelessWidget {
                                               backgroundColor: Color(0xff14213d),
                                               label: Text(
                                                 e.toString(),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: Colors.white,
                                                 ),
                                               ),
@@ -161,10 +164,13 @@ class PokemonDetailPage extends StatelessWidget {
                               margin: const EdgeInsets.symmetric(vertical: 0.0),
                               child: Row(
                                 children: [
-                                  Text(
-                                    "Weaknesses: ",
-                                    style: TextStyle(
-                                      color: Colors.black54,
+                                  Container(
+                                    width: MediaQuery.of(context).size.width * 0.3,
+                                    child: const Text(
+                                      "Weaknesses: ",
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                      ),
                                     ),
                                   ),
                                   Expanded(
@@ -180,7 +186,7 @@ class PokemonDetailPage extends StatelessWidget {
                                               backgroundColor: Color(0xff14213d),
                                               label: Text(
                                                 e,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: Colors.white,
                                                 ),
                                               ),
