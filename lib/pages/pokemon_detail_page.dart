@@ -131,7 +131,8 @@ class PokemonDetailPage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Container(
-                                    width: MediaQuery.of(context).size.width * 0.3,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
                                     child: const Text(
                                       "Multipliers: ",
                                       style: TextStyle(
@@ -143,9 +144,11 @@ class PokemonDetailPage extends StatelessWidget {
                                     children: pokemon.multipliers
                                         .map<Widget>(
                                           (e) => Container(
-                                            margin: const EdgeInsets.only(right: 4.0, left: 2.0),
+                                            margin: const EdgeInsets.only(
+                                                right: 4.0, left: 2.0),
                                             child: Chip(
-                                              backgroundColor: Color(0xff14213d),
+                                              backgroundColor:
+                                                  Color(0xff14213d),
                                               label: Text(
                                                 e.toString(),
                                                 style: const TextStyle(
@@ -165,7 +168,8 @@ class PokemonDetailPage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Container(
-                                    width: MediaQuery.of(context).size.width * 0.3,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
                                     child: const Text(
                                       "Weaknesses: ",
                                       style: TextStyle(
@@ -181,18 +185,62 @@ class PokemonDetailPage extends StatelessWidget {
                                         children: pokemon.weaknesses
                                             .map<Widget>(
                                               (e) => Container(
-                                            margin: const EdgeInsets.only(right: 5.0, left: 2.0),
-                                            child: Chip(
-                                              backgroundColor: Color(0xff14213d),
-                                              label: Text(
-                                                e,
-                                                style: const TextStyle(
-                                                  color: Colors.white,
+                                                margin: const EdgeInsets.only(
+                                                    right: 5.0, left: 2.0),
+                                                child: Chip(
+                                                  backgroundColor:
+                                                      Color(0xff14213d),
+                                                  label: Text(
+                                                    e,
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        )
+                                            )
+                                            .toList(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 0.0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    child: const Text(
+                                      "Next Evolution: ",
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: SingleChildScrollView(
+                                      physics: BouncingScrollPhysics(),
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: pokemon.nextEvolution
+                                            .map<Widget>(
+                                              (e) => Container(
+                                                margin: const EdgeInsets.only(right: 5.0, left: 2.0),
+                                                child: Chip(
+                                                  backgroundColor:
+                                                      Color(0xff14213d),
+                                                  label: Text(
+                                                    e["name"],
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
                                             .toList(),
                                       ),
                                     ),

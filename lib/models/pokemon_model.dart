@@ -1,4 +1,3 @@
-
 class PokemonModel {
   String name;
   String img;
@@ -11,6 +10,7 @@ class PokemonModel {
   String egg;
   List<double> multipliers;
   List<String> weaknesses;
+  List<Map<String, dynamic>> nextEvolution;
 
   PokemonModel({
     required this.name,
@@ -24,6 +24,7 @@ class PokemonModel {
     required this.egg,
     required this.multipliers,
     required this.weaknesses,
+    required this.nextEvolution,
   });
 
   factory PokemonModel.fromJson(Map<String, dynamic> json) => PokemonModel(
@@ -40,6 +41,7 @@ class PokemonModel {
         //multipliers: json["multipliers"] != null ? List<double>.from(json["multipliers"].map((item) => item)) : [],
         multipliers: List<double>.from((json["multipliers"] ?? []).map((item) => item)),
         weaknesses: List<String>.from((json["weaknesses"] ?? []).map((item) => item)),
+        nextEvolution: List<Map<String, dynamic>>.from((json["next_evolution"] ?? []).map((item) => item)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -55,5 +57,6 @@ class PokemonModel {
         "egg": egg,
         "multipliers": List<dynamic>.from((multipliers ?? []).map((e) => e)),
         "weaknesses": List<dynamic>.from((weaknesses ?? []).map((e) => e)),
+        "next_evolution":List<dynamic>.from((nextEvolution ?? []).map((e) => e)),
       };
 }
