@@ -248,6 +248,48 @@ class PokemonDetailPage extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(vertical: 0.0),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width:
+                                    MediaQuery.of(context).size.width * 0.3,
+                                    child: const Text(
+                                      "Pre Evolution: ",
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: SingleChildScrollView(
+                                      physics: BouncingScrollPhysics(),
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: pokemon.preEvolution
+                                            .map<Widget>(
+                                              (e) => Container(
+                                            margin: const EdgeInsets.only(right: 5.0, left: 2.0),
+                                            child: Chip(
+                                              backgroundColor:
+                                              Color(0xff14213d),
+                                              label: Text(
+                                                e["name"],
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                            .toList(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
